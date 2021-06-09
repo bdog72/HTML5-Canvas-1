@@ -8,7 +8,7 @@ canvasEl.width = window.innerWidth;
 canvasEl.height = window.innerHeight;
 
 const starsColor = 'white';
-const starsNumber = 1000;
+const starsNumber = 500;
 const size = 0.005; // maximum star size as a fraction of the screen width
 const speed = 0.05; // fraction of screen width per second
 
