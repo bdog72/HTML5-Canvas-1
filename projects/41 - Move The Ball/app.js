@@ -27,10 +27,34 @@ function runGame() {
   requestAnimationFrame(runGame);
 
   canvasContext.clearRect(0, 0, canvasEl.width, canvasEl.height);
-
   arrowInputs();
 
+  collisionDetection();
+
   drawBall();
+}
+
+// Collision Detection
+function collisionDetection() {
+  // Bottom Boundary
+  if (yP >= canvasEl.height - radius) {
+    yP = canvasEl.height - radius;
+  }
+
+  // Right Boundary
+  if (xP >= canvasEl.width - radius) {
+    xP = canvasEl.width - radius;
+  }
+
+  // Top Boundary
+  if (yP < radius) {
+    yP = radius;
+  }
+
+  // Left Boundary
+  if (xP <= radius) {
+    xP = radius;
+  }
 }
 
 // Moving the Balls
