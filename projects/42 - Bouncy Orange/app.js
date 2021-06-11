@@ -33,10 +33,30 @@ function runGame() {
   // Clear the Ball
   canvasContext.clearRect(0, 0, canvasEl.width, canvasEl.height);
 
+  // ******************** Collision Detection ********************
+  // Bottom Boundary
+  if (yV > 0 && yP >= canvasEl.height - radius) {
+    yV = -yV;
+  }
+
+  // Right Boundary
+  if (xV > 0 && xP > canvasEl.width - radius) {
+    xV = -xV;
+  }
+
+  // Top Boundary
+  if (yV < 0 && yP <= radius) {
+    yV = -yV;
+  }
+
+  // Left Boundary
+  if (xV < 0 && xP <= radius) {
+    xV = -xV;
+  }
+
   // Drawing the Ball
   canvasContext.beginPath();
-  canvasContext.fillStyle = 'orange';
-  // canvasContext.fillStyle = randomColor();
+  canvasContext.fillStyle = 'blue';
   canvasContext.arc(xP, yP, radius, 0, Math.PI * 2);
   canvasContext.fill();
 }
