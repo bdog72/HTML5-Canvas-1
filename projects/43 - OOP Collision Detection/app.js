@@ -7,6 +7,21 @@ const canvasContext = canvasEl.getContext('2d');
 canvasEl.width = window.innerWidth;
 canvasEl.height = window.innerHeight;
 
+let mouseEffect = {
+  x: undefined,
+  y: undefined,
+};
+
+let maxiRadius = 50;
+let miniRadius = 10;
+
+// Mouse Move Event Listener
+window.addEventListener('mousemove', (e) => {
+  mouseEffect.x = e.x;
+  mouseEffect.y = e.y;
+  console.log(mouseEffect);
+});
+
 // Runballs Class
 class RunBalls {
   constructor(xP, yP, xV, yV, radius, red, green, blue) {
@@ -40,6 +55,20 @@ class RunBalls {
 
     this.xP += this.xV;
     this.yP += this.yV;
+
+    // Mouse Move Effect
+    if (
+      mouseEffect.x - this.xP < 20 &&
+      mouseEffect.x - this.xP > -20 &&
+      mouseEffect.y - this.yP < 20 &&
+      mouseEffect.y - this.yP > -20
+    ) {
+      if (this.radius < maxiRadius) {
+        this.radius += 1;
+      }
+    } else if (this.radius > miniRadius) {
+      this.radius -= 1;
+    }
 
     this.drawballs();
   };
